@@ -3,17 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-new-component',
   template: `
-    <h1>New Component</h1>
-    <img [src]="img1">
-    <button [disabled]="buttonStatus">Button</button>
+    <button (click)="myEvent($event)">Button</button>
+    <div (mouseenter)="myMouseEvent($event)">Move mouse here</div>
   `,
   styleUrls: ['./new-component.component.css']
 })
 export class NewComponentComponent implements OnInit {
 
-  img1 = "http://lorempixel.com/400/200/";
+  myEvent(event) {
+    console.log('EVENT:', event);
+  }
 
-  buttonStatus = false;
+  myMouseEvent(event) {
+    console.log('EVENT:', "mouse entered div");
+  }
 
   constructor() { }
 
