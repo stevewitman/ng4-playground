@@ -3,21 +3,31 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-new-component',
   template: `
-    <button (click)="myEvent($event)">Button</button>
-    <div (mouseenter)="myMouseEvent($event)">Move mouse here</div>
+    <h1 [class]="titleClass">Hello</h1>
+    <h2 [class.redTitle]="subtitleClass">Here</h2>
+    <p [ngClass]="paragraphClasses">Paragraph</p>
   `,
-  styleUrls: ['./new-component.component.css']
+  styles: [`
+  h1 {
+    text-decoration: underline;
+  }
+  .redTitle {
+    color: red;
+  }
+  .smallText {
+    font-size: 0.5em;
+  }
+ 
+  `]
 })
 export class NewComponentComponent implements OnInit {
 
-  myEvent(event) {
-    console.log('EVENT:', event);
+  titleClass = "redTitle";
+  subtitleClass = true;
+  paragraphClasses = {
+    'redTitle': true,
+    'smallText': true
   }
-
-  myMouseEvent(event) {
-    console.log('EVENT:', "mouse entered div");
-  }
-
   constructor() { }
 
   ngOnInit() {
