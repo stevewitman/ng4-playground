@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
     <h1 [class]="titleClass">Hello</h1>
     <h2 [class.redTitle]="subtitleClass">Here</h2>
     <p [ngClass]="paragraphClasses">Paragraph</p>
+    <p [style.color]="paraStyle">Paragraph</p>
+    <p [style.color]="paraStyle2 ? 'green' : 'pink'">Paragraph</p>
+    <p [ngStyle]="paraStyles">Paragraph</p>
   `,
   styles: [`
   h1 {
@@ -28,6 +31,15 @@ export class NewComponentComponent implements OnInit {
     'redTitle': true,
     'smallText': true
   }
+
+  paraStyle = 'blue';
+  paraStyle2 = false;
+
+  paraStyles = {
+    'color': 'grey',
+    'font-size': '2em'
+  }
+
   constructor() { }
 
   ngOnInit() {
